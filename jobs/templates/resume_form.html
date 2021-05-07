@@ -1,0 +1,18 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<h2>简历提交 </h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token%}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary" value="申请">
+      Submit
+    </button>
+</form>
