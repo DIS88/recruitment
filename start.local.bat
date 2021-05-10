@@ -9,6 +9,8 @@ test -f settings/local.py && sed -i '' 's/DEBUG = False/DEBUG = True/g' settings
 # python3 manage.py runserver 0.0.0.0:8000 $server_params #
 
 
+python3 manage.py runserver 0.0.0.0:8000 --settings=settings.local
+
 #Get-ChildItem env:  window下查看所有环境变量
 # for sync web server  
 # linux=export | window=set  

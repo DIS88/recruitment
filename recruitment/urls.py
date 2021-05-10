@@ -69,6 +69,8 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path("clogin/", views.login_with_captcha, name="clogin"),
 
+    #django_prometheus
+    url('', include('django_prometheus.urls')),
 ]
 
 admin.site.site_header = "将狗科技招聘管理系统"

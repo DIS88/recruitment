@@ -37,10 +37,11 @@ SIMPLE_BACKEND_REDIRECT_URL = "/accounts/login/"
 # Application definition
 
 INSTALLED_APPS = [
-    # 'simpleui',
+     'simpleui',
     # 'grappelli',
     'bootstrap4',
     'registration',
+    'django_prometheus',
     # 'smart_selects',#链式关联键
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_python3_ldap',
+   # 'django_python3_ldap',
     # 'jobs',
     'jobs.apps.JobConfig',
     'interview',
@@ -91,6 +92,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     # 'interview.performance.performance_logger_middleware',
     'interview.performance.PerformanceAndExceptionLoggerMiddleware',
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -103,6 +105,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ]
 
 ROOT_URLCONF = 'recruitment.urls'
@@ -131,7 +134,8 @@ WSGI_APPLICATION = 'recruitment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django_prometheus.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
     # 'running': {
@@ -181,7 +185,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = "static"
 STATIC_URL = '/static/'
 
 LOGGING = {
@@ -282,6 +287,6 @@ LDAP_AUTH_CONNECTION_PASSWORD = "881224"
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_openldap"
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
 # LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap.utils.sync_user_relations"
-AUTHENTICATION_BACKENDS = {"django_python3_ldap.auth.LDAPBackend",'django.contrib.auth.backends.ModelBackend',}
+AUTHENTICATION_BACKENDS = {'django.contrib.auth.backends.ModelBackend',}
 
 DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=a7bcba3950f49e3385a93073bcb02d6163e19ee6d50ea9fe0ca5ab92542d4c6c"

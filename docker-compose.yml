@@ -21,7 +21,7 @@ services:
     ports:
       - "6379:6379"
   celery:
-    image: "recruitment:0.0.1"
+    image: "recruitment-base:0.0.1"
     container_name: recruit-celery
     volumes:
       - .:/data/recruitment
@@ -30,7 +30,7 @@ services:
     depends_on: 
       - redis
   flower:
-    image: "recruitment:0.0.1"
+    image: "recruitment-base:0.0.1"
     container_name: recruit-flower
     ports:
       - "5555:5555"

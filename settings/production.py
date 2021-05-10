@@ -1,4 +1,3 @@
-print("settings.production.py")
 import os
 from .base import *
 
@@ -8,9 +7,9 @@ from .base import *
 
 ALLOWED_HOSTS = ["127.0.0.1", "host.docker.internal","*"]
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','w$46iie+a8-7f(13#i%v@pa@+fbm^t@fofizy1^m69r8(-h16o3s882')
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','w$46iie+a8-7f(13#i%v@pa@+fbm^t@fofizy1^m69r8(-h16o3s882')
 
-DEBUG = False
+#DEBUG = False
 INSTALLED_APPS += (
     #'debug_toolbar', # and other apps for local development
 )
@@ -54,12 +53,12 @@ LDAP_AUTH_CONNECTION_USERNAME = os.environ.get('LDAP_AUTH_CONNECTION_USERNAME')
 LDAP_AUTH_CONNECTION_PASSWORD = os.environ.get('LDAP_AUTH_CONNECTION_PASSWORD')
 
 # STATIC_URL = 'http://icdn.ihopeit.com/static/'
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # 阿里云 CDN 存储静态资源文件 & 阿里云存储上传的图片/文件
 # STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
 
-DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
+#DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
 
 # AliCloud access key ID
 OSS_ACCESS_KEY_ID = os.environ.get('OSS_ACCESS_KEY_ID','')
