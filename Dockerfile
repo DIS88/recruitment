@@ -15,4 +15,4 @@ RUN apk add --update --no-cache curl jq py3-configobj py3-pip py3-setuptools pyt
 
 COPY . .
 EXPOSE 8000
-CMD ["/bin/sh", "/data/recruitment/start.product.bat"]
+CMD ["/bin/sh", "/data/recruitment/start.local.sh"]
