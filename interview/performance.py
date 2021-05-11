@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import traceback
 
 from sentry_sdk import capture_exception, capture_message
-from . import dingtalk
+from .tasks import send_dingtalk_message
 
 logger = logging.getLogger(__name__)
 
