@@ -3,7 +3,7 @@ services:
   web:
     image: "recruitment-base:0.0.1"
     container_name: recruitment-web
-    entrypoint: ["/bin/sh", "/data/recruitment/start.local.bat"]
+    entrypoint: ["/bin/sh", "/data/recruitment/start.product.bat"]
     environment:
       - server_params=--settings=settings.local
     volumes:
