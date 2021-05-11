@@ -26,14 +26,13 @@ exportable_fields = ('username', 'city', 'phone', 'bachelor_school', 'master_sch
 def notify_interviewver(modeladmin, request, queryset):
     candidates = ""
     interviewers = ""
-    print("queryset",queryset)
     for obj in queryset:
         print("obj",obj)
         candidates = obj.username + ";" + candidates
         if obj.first_interviewer_user:
             interviewers = obj.first_interviewer_user.username + ";" + interviewers
-    dingtalk.send("候选人 %s 进入面试环节，请面试官准备好 %s" % (candidates, interviewers))
-    # send_dingtalk_message.delay("候选人 %s 进入面试环节，请面试官准备好 %s" % (candidates, interviewers)) #celery发送
+    # dingtalk.send("候选人 %s 进入面试环节，请面试官准备好 %s" % (candidates, interviewers))
+    send_dingtalk_message.delay("候选人 %s 进入面试环节，请面试官准备好 %s" % (candidates, interviewers)) #celery发送
     messages.add_message(request, messages.INFO, '成功发送面试通知' )
 
 
@@ -67,8 +66,8 @@ def export_model_as_csv(modeladmin, request, queryset):
 export_model_as_csv.short_description = "导出csv文件"
 export_model_as_csv.allowed_permissions = ('export',)
 
-# def test():
-#     pass
+def test():
+    pass
     
 
 class CandicateAdmin(admin.ModelAdmin):

@@ -9,7 +9,7 @@ ALLOWED_HOSTS = ["127.0.0.1", "host.docker.internal","*"]
 
 #SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','w$46iie+a8-7f(13#i%v@pa@+fbm^t@fofizy1^m69r8(-h16o3s882')
 
-#DEBUG = False
+DEBUG = False
 INSTALLED_APPS += (
     #'debug_toolbar', # and other apps for local development
 )
@@ -71,7 +71,7 @@ OSS_BUCKET_NAME = 'djangorecruit'
 # Refer https://www.alibabacloud.com/help/zh/doc-detail/31837.htm for OSS Region & Endpoint
 OSS_ENDPOINT = 'oss-cn-beijing.aliyuncs.com'
 
-DINGTALK_WEB_HOOK_TOKEN = os.environ.get('DINGTALK_WEB_HOOK_TOKEN', "https://oapi.dingtalk.com/robot/send?access_token=a7bcba3950f49e3385a93073bcb02d6163e19ee6d50ea9fe0ca5ab92542d4c6c")
+DINGTALK_WEB_HOOK_TOKEN = os.environ.get('DINGTALK_WEB_HOOK_TOKEN', "a7bcba3950f49e3385a93073bcb02d6163e19ee6d50ea9fe0ca5ab92542d4c6c")
 DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=%s" % DINGTALK_WEB_HOOK_TOKEN
 
 ##########################

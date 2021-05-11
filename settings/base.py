@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,12 +93,14 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
     'django_prometheus.middleware.PrometheusBeforeMiddleware',
     # 'interview.performance.performance_logger_middleware',
     'interview.performance.PerformanceAndExceptionLoggerMiddleware',
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -172,6 +175,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
+
+LANGUAGES = [
+    ('zh-hans', _('Chinese')),
+    ('en', _('English')),
+]
+
 LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
@@ -179,6 +188,10 @@ TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
 
 USE_L10N = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 USE_TZ = True
 
@@ -211,7 +224,8 @@ LOGGING = {
             #'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'simple',
-            'filename': os.path.join(os.path.dirname(BASE_DIR), '../recruitment.admin.log'),
+            # 'filename': os.path.join(os.path.dirname(BASE_DIR), 'recruitment.admin.log'),
+            'filename': os.path.join(BASE_DIR, 'recruitment.admin.log'),
         },
         
         # "interview.performance": {
@@ -224,7 +238,7 @@ LOGGING = {
             #'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'simple',
-            'filename': os.path.join(os.path.dirname(BASE_DIR), '../recruitment.performance.log'),
+            'filename': os.path.join(BASE_DIR, 'recruitment.performance.log'),
         },
     },
 

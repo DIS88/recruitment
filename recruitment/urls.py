@@ -64,6 +64,7 @@ urlpatterns = [
     url('^accounts/', include('registration.backends.simple.urls')),
     # url(r'^chaining/', include('smart_selects.urls')),#智能下拉框没实现
     path('api/', include(router.urls)),
+    path('i18n/', include('django.conf.urls.i18n')),
     url(r'^api-auth', include('rest_framework.urls')),
 
     path('captcha/', include('captcha.urls')),

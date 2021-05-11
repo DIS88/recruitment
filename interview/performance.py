@@ -54,7 +54,8 @@ class PerformanceAndExceptionLoggerMiddleware:
             logger.warning(message)
             
             # send dingtalk message
-            dingtalk.send(message)
+            send_dingtalk_message.delay(message)
+            # dingtalk.send(message)
 
             # capture exception to sentry:
             capture_exception(exception)

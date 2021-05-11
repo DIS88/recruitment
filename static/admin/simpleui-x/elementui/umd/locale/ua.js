@@ -18,7 +18,7 @@
   exports.default = {
     el: {
       colorpicker: {
-        confirm: 'Обрати',
+        confirm: 'OK',
         clear: 'Очистити'
       },
       datepicker: {
@@ -124,14 +124,14 @@
         hasCheckedFormat: '{checked}/{total} вибрано'
       },
       image: {
-        error: 'ПОМИЛКА'
+        error: 'FAILED' // to be translated
       },
       pageHeader: {
-        title: 'Назад'
+        title: 'Back' // to be translated
       },
       popconfirm: {
-        confirmButtonText: 'Так',
-        cancelButtonText: 'Ні'
+        confirmButtonText: 'Yes', // to be translated
+        cancelButtonText: 'No' // to be translated
       }
     }
   };
